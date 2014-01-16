@@ -3,3 +3,73 @@ IUS :
 2. Pengennya ada sistem posting2, jadi setelah di posting akan di pakai utk keperluan accounting.. 
 3. Stok asli minus ga bole, jadi kalau minus ga bisa buat nota.. kalau yg stok visualisasi nya gapapa minus.. 
 4. hutang / piutang minus gpp.. 
+
+
+
+Alur skema discount ketika buat faktur.. 
+1. pertama input customer dulu, dari sini milih customer tersebut termasuk tipe apa.. 
+2. buat fakturnya, dengan cara input barang2 (barang2 di bedakan dari jenis brand/yg bukan brand, apaka produk tersebut termasuk skema diskonnya atau tidak).. misal customer tipe B, jadi saat dia buat barang bertipe brand otomatis kan diskonnya masuk 25%..  singkat crita bruto totalnya 12juta.. Nett nya 10jt.. 
+3. nanti perhitungannya dalam waktu sebulan, misal dalam sebulan ada 3 faktur,, faktur 1 itu 10jt, faktur 2, 5jt.. dan faktur 3 itu 7jt.. maka dihitung lagi total nett nya itu, kemudian dihitung lg dia dapet bonus diskon CN yg mana.. nanti di kalkulasi lagi dan di buatkan laporan CN nya.. 
+4. nanti trigger nya pake Posting dari accounting.. jadi di posting di tombol itu dulu, baru ngitung semua CN CN nya.. 
+
+rumus CN  :  GROSS - CN (5-15%)
+rumus CD : Nett sales - 3%..  ini nanti profit loss.. menjadi biaya lain2.. 
+perhitungan bonus : faktur - diskon.. blom dikurangin CN.. 
+
+5. Jadi di pelunasan piutang itu bisa nambah nilai dari DN (debit note) atau ngurangin nilai dari CN (credit note).. 
+
+** TIPE customer tidak boleh dirubah , hanya boleh di rubah di awal bulan.. istilahnya boleh dirubah setelah semua faktur dalam kurun waktu sebulan.. ''
+
+
+
+Meeting tanggal 16 Desember 2013 : 
+1. Skema diskon di print di cetak.
+2. ada pengeleompokkan customer, gRoup (franchise dan miracle) dan non group (west and east)
+field kategori dan field jenis..  dan field ini harus disimpan di setiap buat NOTA FAKTUR.. supaya histori nya tidak berubah.. 
+3. ada Kode Area di master Customer, isinya karyawan atau contact person nya.. 
+4. di master produk ada field Reg/No-Reg.. tujuannya utk penanda BPOM aja.. field static aja kayak status dokumen.. 
+5. di Master Produk ada field Stok Minim.. nanti akan muncul di laporan atau di modul mana lah yang memudahkan mereka membacanya.. 
+6. di Master customer bisa ada ekspedisi, dan alamat kirim.. 
+7. hutang itu ketika ada uang muka sudah diakui sebagai hutang.. 
+
+
+Kendala buka PO : ada barang bonus, 
+kendala masalah DP : karena berususan dengan BPOM, jadi ada kendala, misal saya DP pake 500 dollar.. nanti pake kurs tengah yang bener.. bukan kurs transaksi.. Pada waktu pencatatan mestinya uda ada selisih laba rugi kurs.. pencatatannya tetep dalam Rupiah.. terutama dalam cut off date utk report.. pembukuannya dalam bentuk Rupiah.. ada hutang dalam bentuk dollar juga, jadi misal 500 dollar juga harus di catet di software.. 
+
+
+Masalah model Bisnis : tambahkan fitur utk Gudang juga.. utk bisa split gudang.. 
+Alur Penjualan : ada konfirmasi order dari bagian marketing (KO) diinput ke sistem.. 
+
+KO : barang A, barang B, barang C, dan ketauan harga dan discuntnya.. 
+Harga dibagi menjadi 3. harga utk marketing, harga utk group/miracle, harga utk franchise.. (bisa static, bisa di tambahkan).. 
+Penentuan harganya itu dari tipe customernya.. 
+ada juga penentuannya dari area (west / east) --> ini maksudnya supaya nanti bisa dilihat laporannya yang west brp, yang east brp.. 
+ada pengecekan utk customer jika sudah limit piutangnya, tidak bisa buat Konfirmasi Order atau mesen barang lagi.. 
+- Ketika buat Konfirmasi Order ada menampilkan stok secara live.. 
+- Stok virtual bisa dibuat minus.. 
+- ada peringatan utk faktur yang uda seminggu ga ada kepastian, 
+- alur KO - buat surat jalan (pengurangan stok dari SJ ini) .. baru buat FAktur, faktur ini lookup dari SJ.. faktur ini sudah ga bisa dirubah2.. hanya utk billing aja.. 
+- konfirmasi order ada pengecekan limit piutang , overdue , ada otorisasi untuk dibuka supaya bisa customer buat ko lagi . 
+-faktur yang yang masih open  limit 20 juta bisa di cicil 
+tiap customer bisa di set limit notanya misal 20 juta, cust b  10 juta , limitnya bisa dibatasi atau jumlah fakturnya di batasi misal 4 , overdue juga ga boleh buat ko 
+
+
+- user nginput Expired date di LPB / LBM 
+diskon kadang bisa berupa cashback, transfer / uang tunai langsung transfer ke customer.. 
+
+kalkulasi penilaian Customer adalah 1 bulan, jadi misal saya customer baru, saya lgsg masuk ke customer C paling rendah.. nanti seiring berjalan beli2, nanti per 1 bln dihitung ada kalukasinya supaya promote customer.. Tapi juga bisa langsung di nilai secara langsung dari master data.. jadi 2 jalur.. Syaratnya nanti bisa berubah2.. 
+
+
+- berikan minimum Stok real per item dan per lokasi.. 
+- PO yang blom ada LBM / blom terealisasi.. Pengen tau PO2 mana yang sudah dikirim invoice dan sudah diakui 
+- ADa modul Pengakuan Hutang, tergantung barang datang dulu, atau invoice datang terlebih dahulu.. 
+- PO bisa dibatalkan, tapi cek dulu apakah ada pengakuan hutang dan LBM / barang terima 
+- DObel pengecekan ketika barang masuk dan pengakuan hutang..  jadi misal hari ini ada barang datang dan invoice datang, akuntansi uda mengakui hutang diinput di software.. tpi karena sudah malam hari, LBM dibuat besok pagi.. jadi stok diakui besok pagi.. 
+
+Ada promo diskon.. misal tanggal 1-31 produk A akan berdiskon promo/reguler 30%.. 
+Ada additional diskon juga, misal di PRoduk A tersebut, di tengah bulan ada lebaran, bisa ditambah 10%.. 
+
+Ada penjualan jasa /service, dengan modul yg beda.. 
+
+Ada jenis PPN juga.. 
+Jenis barang / total barang : 300an.. 
