@@ -1,0 +1,5 @@
+IUS : 
+1. Bisa lihat laporan laba/rugi untuk EAST/WEST 
+2. Pengennya ada sistem posting2, jadi setelah di posting akan di pakai utk keperluan accounting.. 
+3. Stok asli minus ga bole, jadi kalau minus ga bisa buat nota.. kalau yg stok visualisasi nya gapapa minus.. 
+4. hutang / piutang minus gpp.. 
