@@ -73,3 +73,43 @@ Ada penjualan jasa /service, dengan modul yg beda..
 
 Ada jenis PPN juga.. 
 Jenis barang / total barang : 300an.. 
+
+
+
+Meeting 16 Jan 2014
+- Time Table pengerjaan Program (katanya dia minta April selesai)
+- Parameter pengingat kalau stok minim dibagi 3 grade (low, medium, high) bisa dikasih warna misal merah, kuning, hijau. Grade yang dimasukkan berupa variabel juga jadi batasan masuk merah, kuning atau hijau bisa dimasukkan manual. juga ada kalau kebanyakan (satu field aja > dr brp)
+- OP minta harga terakhir ditampilkan (sudah ada di kita)
+- di Supplier ada list barang apa saja yg dibeli di supplier tersebut
+- di OP list barang nya sesuai dengan supplier yang dipilih
+- di OP ada pilihan all produk yang mengeluarkan semua produk
+- pengkodean produk maunya 7 digit. 2 digit group, 2 digit jenis (retail & cabin), 3 digit no urut.	
+- master produk : volume, berat, group, jenis, minimum stok, harga grup & non grup & franchise, no POM, tgl exp POM
+- di OP ada pilihan mata uang dimana dia akan langsung memilih kurs sesuai dengan tanggal PO dibuat
+- di PB bagaimana cara mengenolkan barang PO yang masih ada (nggantung) tetapi tidak mau diterima lagi
+- di PB barang yang sama bisa berbeda tgl ed nya
+
+Sistem Exp :
+	- Sistem nya menggunakan FEFO (First Expired First Out), bisa terjadi barang yang datang terakhir expired nya lebih cepat
+	- Input expried saat Barang Datang
+	- Saat mengeluarkan barang bisa pilih tanggal expired nya mana dan bisa tau stok sisa barang tersebut di tgl exp tersebut
+	- No batch itu identik dengan No Produk sama Tgl Exp
+	- Kita perlu memikirkan bagaimana sistem simpan di db nya...
+
+- Kirimkan ke pak hudiman ERD utk master data sehingga pas meeting data nya sudah menyerupai aslinya
+
+- Meeting lagi bisa di tanggal awal Feb
+- bisa keluarkan PPN
+
+
+
+
+
+
+
+
+
+
+
+
+
